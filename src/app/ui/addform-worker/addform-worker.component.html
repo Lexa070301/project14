@@ -1,0 +1,41 @@
+<div class="row mb-3">
+  <div class="col-12">
+    <h5>Добавить сотрудника</h5>
+  </div>
+  <div class="col-12">
+    <form [formGroup]="myForm" class="form-group d-flex justify-content-between">
+      <input
+        type="text"
+        class="form-control mr-3"
+        placeholder="Имя"
+        name="name"
+        formControlName="name"
+      />
+      <input
+        type="text"
+        class="form-control mr-3"
+        placeholder="Фамилия"
+        name="surname"
+        formControlName="surname"
+      />
+      <input
+        type="tel"
+        class="form-control mr-3"
+        placeholder="Номер телефона"
+        name="phone"
+        prefix="+7"
+        mask="(000)000-00-00"
+        formControlName="phone"
+      />
+      <select class="custom-select" formControlName="type">
+        <option [ngValue]="myWorkerType.programmer" selected>Программист</option>
+        <option [ngValue]="myWorkerType.designer">Дизайнер</option>
+        <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
+        <option [ngValue]="myWorkerType.manager">Менеджер</option>
+      </select>
+    </form>
+  </div>
+  <div class="col-12 mt-1">
+    <button class="btn btn-outline-primary btn-md" (click)="onAddWorker()">Добавить</button>
+  </div>
+</div>

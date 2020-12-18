@@ -1,0 +1,55 @@
+<ng-container *ngIf="workers.length > 0">
+  <div class="row">
+    <div class="col-12">
+      <h5>{{ title }}</h5>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col" [style.width]="'100px'">#</th>
+          <th scope="col" [style.width]="'20%'">Имя</th>
+          <th scope="col" [style.width]="'20%'">Фамилия</th>
+          <th scope="col" [style.width]="'20%'">Телефон</th>
+          <th scope="col" [style.width]="'350px'"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let worker of workers">
+          <th scope="row">{{ worker.id }}</th>
+          <td *ngIf="worker.bool">{{ worker.name }}</td>
+          <td *ngIf="!worker.bool">
+            <input type="text" class="form-control my-input" placeholder="Имя" [defaultValue]="worker.name" [(ngModel)]="worker.name">
+          </td>
+          <td *ngIf="worker.bool">{{ worker.surname }}</td>
+          <td *ngIf="!worker.bool">
+            <input type="text" class="form-control my-input" placeholder="Фамилия" [defaultValue]="worker.surname" [(ngModel)]="worker.surname">
+          </td>
+          <td *ngIf="worker.bool">{{ worker.phone }}</td>
+          <td *ngIf="!worker.bool">
+            <input type="tel" prefix="+7" mask="(000)000-00-00" class="form-control my-input" placeholder="Телефон" [defaultValue]="worker.phone" [(ngModel)]="worker.phone">
+          </td>
+          <td>
+            <button *ngIf="worker.bool"
+              class="btn btn-outline-primary btn-md mr-2"
+              (click)="onEditWorker(worker.id)"
+            >
+              Редактировать
+            </button>
+            <button *ngIf="!worker.bool"
+              class="btn btn-outline-primary btn-md mr-2"
+              (click)="onSaveWorker(worker.id, worker.name, worker.surname, worker.phone)"
+            >
+              Сохранить
+            </button>
+            <button
+              class="btn btn-outline-danger btn-md"
+              (click)="onDeleteWorker(worker.id)"
+            >
+              Удалить
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-container>
