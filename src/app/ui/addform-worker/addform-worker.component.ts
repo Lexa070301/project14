@@ -38,7 +38,6 @@ export class AddformWorkerComponent implements OnInit {
     let surname = this.myForm.value.surname;
     let phone = this.myForm.value.phone;
     let type = this.myForm.value.type;
-    console.log(this.myForm);
     if (this.myForm.status == "VALID") {
       this.addWorker.emit({
         name: name,
